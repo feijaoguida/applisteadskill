@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "App List EADSkills",
-  description: "Listagem de produtos da EADSkills, By Roseweltty Guida",
+  title: "Login - App List EADSkills",
+  description: "Login, By Roseweltty Guida",
 };
 
 export default function RootLayout({

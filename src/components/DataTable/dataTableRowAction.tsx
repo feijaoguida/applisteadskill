@@ -28,7 +28,6 @@ export function DataTableRowActions<TData>({
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
-  console.log("row = ", row);
   const product = row.original as Product;
   return (
     <>

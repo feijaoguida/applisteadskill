@@ -22,17 +22,10 @@ import {
   SidebarRail,
   SidebarSeparator,
 } from "@/components/ui/sidebar";
-import { AppFilter } from "./appFilter";
+
 import Image from "next/image";
 
 import { useSidebar } from "@/components/ui/sidebar";
-
-const filter = [
-  {
-    name: "Ordem",
-    items: ["Crescente", "Descrecente"],
-  },
-];
 
 type AppSidebarProps = {
   props?: React.ComponentProps<typeof Sidebar>;
@@ -75,7 +68,6 @@ export function AppSidebar({ categories, ...props }: AppSidebarProps) {
         {/* <SearchForm /> */}
       </SidebarHeader>
       <SidebarContent className="gap-0">
-        <AppFilter filters={filter} />
         <SidebarSeparator className="mx-0" />
         {/* We create a collapsible SidebarGroup for each parent. */}
         {dataCategories.map((category) => (
