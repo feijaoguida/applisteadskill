@@ -44,9 +44,8 @@ export default function ProductPagination({ products }: ProductsProps) {
           </PaginationItem>
           {Array.from({ length: totalPages }).map((_, index) => {
             return (
-              <PaginationItem>
+              <PaginationItem key={index}>
                 <PaginationLink
-                  key={index}
                   onClick={() => handleClickPage(index + 1)}
                   isActive={actualPage === index + 1}
                   href="#"

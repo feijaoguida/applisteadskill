@@ -1,7 +1,8 @@
 "use client";
+import { Product } from "@/components/DataTable/columns";
 import { useState } from "react";
 
-export const usePagination = (data: Array<any>, itensPerPage: number) => {
+export const usePagination = (data: Array<Product>, itensPerPage: number) => {
   const [actualPage, setActualPage] = useState(1);
   const totalPages = Math.ceil(data.length / itensPerPage);
 

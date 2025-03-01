@@ -114,7 +114,7 @@ export default function EditForm({
         <FormField
           name="description"
           control={form.control}
-          render={({ field }: { field: any }) => (
+          render={({ field }) => (
             <FormItem className="col-span-2 md:col-span-1">
               <FormLabel>Description</FormLabel>
               <FormControl>
