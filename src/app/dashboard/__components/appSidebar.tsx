@@ -1,9 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { ChevronRight, Command } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
-// import { SearchForm } from "@/components/search-form";
 import {
   Collapsible,
   CollapsibleContent,
@@ -33,8 +32,6 @@ type AppSidebarProps = {
 };
 
 export function AppSidebar({ categories, ...props }: AppSidebarProps) {
-  //const [selectCategory, setSelectCategory] = React.useState("Todas");
-
   const { selectedCategory, setSelectedCategory } = useSidebar();
 
   const dataCategories = [
@@ -65,11 +62,9 @@ export function AppSidebar({ categories, ...props }: AppSidebarProps) {
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
-        {/* <SearchForm /> */}
       </SidebarHeader>
       <SidebarContent className="gap-0">
         <SidebarSeparator className="mx-0" />
-        {/* We create a collapsible SidebarGroup for each parent. */}
         {dataCategories.map((category) => (
           <Collapsible
             key={category.title}

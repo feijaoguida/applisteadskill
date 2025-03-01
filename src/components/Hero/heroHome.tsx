@@ -1,4 +1,3 @@
-import { ArrowDownRight, Star } from "lucide-react";
 import { getImageProps } from "next/image";
 
 import { Button } from "@/components/ui/button";

@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-
-import DeleteForm from "@/components/forms/deleteForm";
 import EditForm from "@/components/forms/editForm";
 import IconMenu from "@/components/iconMenu";
 import { Button } from "@/components/ui/button";
@@ -17,6 +15,7 @@ import { Row } from "@tanstack/react-table";
 import { MoreHorizontal, SquarePen, Trash2 } from "lucide-react";
 import { DialogResponsive } from "./dialog";
 import { Product } from "./columns";
+import DeleteForm from "../forms/deleteForm";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -38,14 +37,14 @@ export function DataTableRowActions<TData>({
       >
         <EditForm product={product} setIsOpen={setIsEditOpen} />
       </DialogResponsive>
-      {/* <DialogResponsive
+      <DialogResponsive
         isOpen={isDeleteOpen}
         setIsOpen={setIsDeleteOpen}
         title="Delete Person"
         description="Are you sure you want to delete this person?"
       >
         <DeleteForm product={product} setIsOpen={setIsDeleteOpen} />
-      </DialogResponsive> */}
+      </DialogResponsive>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

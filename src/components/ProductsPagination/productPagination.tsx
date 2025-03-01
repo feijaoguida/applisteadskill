@@ -46,6 +46,7 @@ export default function ProductPagination({ products }: ProductsProps) {
             return (
               <PaginationItem>
                 <PaginationLink
+                  key={index}
                   onClick={() => handleClickPage(index + 1)}
                   isActive={actualPage === index + 1}
                   href="#"

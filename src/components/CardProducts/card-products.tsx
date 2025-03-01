@@ -10,7 +10,7 @@ import { Product } from "../DataTable/columns";
 import Link from "next/link";
 import Image from "next/image";
 import { limitarTexto } from "@/lib/limitarTexto";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import StarRatings from "react-star-ratings";
 interface CardsProps {

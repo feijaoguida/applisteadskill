@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -82,7 +82,7 @@ export default function EditForm({
         <FormField
           name="title"
           control={form.control}
-          render={({ field }: { field: any }) => (
+          render={({ field }) => (
             <FormItem className="col-span-2 md:col-span-1">
               <FormLabel>Titulo</FormLabel>
               <FormControl>
@@ -101,7 +101,7 @@ export default function EditForm({
         <FormField
           name="price"
           control={form.control}
-          render={({ field }: { field: any }) => (
+          render={({ field }) => (
             <FormItem className="col-span-2 md:col-span-1">
               <FormLabel>Preço</FormLabel>
               <FormControl>
@@ -132,7 +132,7 @@ export default function EditForm({
         <FormField
           name="category"
           control={form.control}
-          render={({ field }: { field: any }) => (
+          render={({ field }) => (
             <FormItem className="col-span-2 md:col-span-1">
               <FormLabel>Categoria</FormLabel>
               <FormControl>
@@ -151,7 +151,7 @@ export default function EditForm({
         <FormField
           name="image"
           control={form.control}
-          render={({ field }: { field: any }) => (
+          render={({ field }) => (
             <FormItem className="col-span-2 md:col-span-1">
               <FormLabel>Imagem</FormLabel>
               <FormControl>

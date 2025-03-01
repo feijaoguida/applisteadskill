@@ -16,6 +16,7 @@ import * as z from "zod";
 import { useForm } from "react-hook-form";
 // import { signIn } from "../../../auth";
 import { signIn } from "next-auth/react";
+import { Loader2 } from "lucide-react";
 
 const authSchema = z.object({
   username: z.string().min(1),
@@ -60,7 +61,7 @@ export default function LoginPage({
             <FormField
               name="username"
               control={form.control}
-              render={({ field }: { field: any }) => (
+              render={({ field }) => (
                 <FormItem className="col-span-2 md:col-span-1">
                   <FormLabel>Nome de Usuário</FormLabel>
                   <FormControl>
@@ -81,7 +82,7 @@ export default function LoginPage({
             <FormField
               name="password"
               control={form.control}
-              render={({ field }: { field: any }) => (
+              render={({ field }) => (
                 <>
                   <FormItem className="col-span-2 md:col-span-1 ">
                     <div className="flex items-center">
@@ -109,8 +110,17 @@ export default function LoginPage({
               )}
             />
           </div>
-          <Button type="submit" className="w-full">
-            Login
+          <Button disabled={isLoading} type="submit" className="w-full">
+            <>
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Logando...
+                </>
+              ) : (
+                "Login"
+              )}
+            </>
           </Button>
         </div>
       </form>

@@ -2,7 +2,6 @@ import { HeroHome } from "@/components/Hero/heroHome";
 import ProductPagination from "@/components/ProductsPagination/productPagination";
 
 import { getProducts } from "@/gets/getProducts";
-import Link from "next/link";
 
 export default async function ProductPage() {
   const products = await getProducts();
