@@ -6,18 +6,13 @@ import {
 } from "@/components/ui/sidebar";
 import { AppSidebar } from "./__components/appSidebar";
 import { DataTable } from "@/components/DataTable/dataTable";
-import { Product, columns } from "@/components/DataTable/columns";
-import { Api } from "@/lib/api";
-
-async function getProducts(): Promise<[Product]> {
-  const response = await Api.get("products");
-  return response.data;
-}
+import { columns } from "@/components/DataTable/columns";
+import { getProducts } from "@/gets/getProducts";
 
 export default async function DashboardPage() {
   const products = await getProducts();
   const uniqueCategories = Array.from(
-    new Set(products.map((product) => product.category))
+    new Set(products?.map((product) => product.category))
   );
 
   return (
@@ -29,7 +24,7 @@ export default async function DashboardPage() {
           <Separator orientation="vertical" className="mr-2 h-4" />
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          {products.length >= 0 ? (
+          {products && products.length >= 0 ? (
             <DataTable columns={columns} data={products} />
           ) : (
             Array.from({ length: 10 }).map((_, index) => (
