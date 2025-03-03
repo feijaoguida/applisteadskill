@@ -4,14 +4,14 @@ import DetailProduct from "./_components/detail";
 
 type DetailProductPageProps = {
   params: {
-    id: number;
+    id: string;
   };
 };
 
 export default async function DetailProductPage({
   params,
 }: DetailProductPageProps) {
-  const ID: number = params.id;
+  const ID: number = parseInt(params.id);
 
   const product: Product = (await getProducts(ID)) as Product;
 
