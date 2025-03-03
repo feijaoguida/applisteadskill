@@ -4,7 +4,6 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/Header/page";
 import Footer from "@/components/Footer/page";
-import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,12 +23,10 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={`${inter.variable}  antialiased`}>
-        <SessionProvider>
-          <Header />
-          {children}
-          <Toaster />
-          <Footer />
-        </SessionProvider>
+        <Header />
+        {children}
+        <Toaster />
+        <Footer />
       </body>
     </html>
   );

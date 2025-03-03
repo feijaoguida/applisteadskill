@@ -19,22 +19,25 @@ import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-import { useSession } from "next-auth/react";
-
 const authSchema = z.object({
   username: z.string().min(1),
   password: z.string().min(1),
 });
 
+type LoginPageProps = {
+  className?: React.ComponentProps<"form">;
+  props?: React.ComponentProps<"form">;
+  usuarioLogado: boolean;
+};
+
 export default function LoginPage({
+  usuarioLogado,
   className,
   ...props
-}: React.ComponentProps<"form">) {
+}: LoginPageProps) {
   const form = useForm<z.infer<typeof authSchema>>({
     resolver: zodResolver(authSchema),
   });
-
-  const session = useSession();
 
   const router = useRouter();
 
@@ -45,6 +48,7 @@ export default function LoginPage({
         username: values.username,
         password: values.password,
       });
+      console.log("result = =", result);
       if (result?.ok) {
         toast.success("Sucesso.", {
           description: `Usuário Logado com Sucesso`,
@@ -59,7 +63,7 @@ export default function LoginPage({
   };
   return (
     <>
-      {session ? (
+      {usuarioLogado ? (
         <>
           <div>
             <h1 className="text-2xl font-bold">Usuário Já logado Aguarde</h1>

@@ -1,7 +1,10 @@
 import Image from "next/image";
 import LoginPage from "./loginForm";
+import { auth } from "../api/auth/auth";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+
   return (
     <div className="grid min-h-svh lg:grid-cols-2 bg-blueead">
       <div className="relative hidden bg-muted lg:flex lg:items-center lg:justify-center">
@@ -23,7 +26,7 @@ export default function Home() {
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <LoginPage />
+            <LoginPage usuarioLogado={session ? true : false} />
           </div>
         </div>
       </div>

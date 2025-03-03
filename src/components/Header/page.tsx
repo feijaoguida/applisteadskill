@@ -1,11 +1,8 @@
-"use client";
 import Link from "next/link";
 import Logo from "../logo";
-import { Button } from "../ui/button";
-import { signOut, useSession } from "next-auth/react";
+import ValidateLogin from "../validateLogin";
 
 export default function Header() {
-  const { data: session } = useSession();
   return (
     <header className=" flex justify-center items-center  bg-blueead text-white  py-4">
       <div className=" container flex flex-row justify-between items-center ">
@@ -34,15 +31,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        {!session ? (
-          <Button className="text-white ">
-            <Link href="/login">Login</Link>
-          </Button>
-        ) : (
-          <>
-            <Button onClick={() => signOut()}>Logout</Button>
-          </>
-        )}
+        <ValidateLogin />
       </div>
     </header>
   );
