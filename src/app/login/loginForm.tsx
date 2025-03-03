@@ -17,7 +17,7 @@ import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 const authSchema = z.object({
   username: z.string().min(1),
@@ -39,8 +39,6 @@ export default function LoginPage({
     resolver: zodResolver(authSchema),
   });
 
-  const router = useRouter();
-
   const isLoading = form.formState.isSubmitting;
   const onSubmit = async (values: z.infer<typeof authSchema>) => {
     try {
@@ -48,13 +46,12 @@ export default function LoginPage({
         username: values.username,
         password: values.password,
       });
-      console.log("result = =", result);
       if (result?.ok) {
         toast.success("Sucesso.", {
           description: `Usuário Logado com Sucesso`,
           duration: 3000,
         });
-        router.push("/dashboard");
+        redirect("/dashboard");
       }
       return result;
     } catch (error) {
@@ -68,7 +65,7 @@ export default function LoginPage({
           <div>
             <h1 className="text-2xl font-bold">Usuário Já logado Aguarde</h1>
           </div>
-          {router.push("/dashboard")}
+          {redirect("/dashboard")}
         </>
       ) : (
         <Form {...form}>

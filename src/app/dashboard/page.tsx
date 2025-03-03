@@ -10,6 +10,7 @@ import { Product, columns } from "@/components/DataTable/columns";
 import { getProducts } from "@/gets/getProducts";
 import { auth } from "../api/auth/auth";
 import { redirect } from "next/navigation";
+import ValidateLogin from "@/components/validateLogin";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -27,9 +28,12 @@ export default async function DashboardPage() {
     <SidebarProvider>
       <AppSidebar categories={uniqueCategories} />
       <SidebarInset>
-        <header className="flex sticky top-0 bg-background h-16 shrink-0 items-center gap-2 border-b px-4 z-50">
-          <SidebarTrigger className="-ml-1" />
-          <Separator orientation="vertical" className="mr-2 h-4" />
+        <header className="flex sticky justify-between top-0 bg-background h-16 shrink-0 items-center gap-2 border-b px-4 z-50">
+          <div className="flex items-center">
+            <SidebarTrigger className="-ml-1" />
+            <Separator orientation="vertical" className="mr-2 h-4" />
+          </div>
+          <ValidateLogin />
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           {products && products.length >= 0 ? (

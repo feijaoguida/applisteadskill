@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "App List EADSkills",
+  title: "DashBoard - App List EADSkills",
   description: "Listagem de produtos da EADSkills, By Roseweltty Guida",
 };
 

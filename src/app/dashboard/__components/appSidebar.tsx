@@ -25,6 +25,7 @@ import {
 import Image from "next/image";
 
 import { useSidebar } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 type AppSidebarProps = {
   props?: React.ComponentProps<typeof Sidebar>;
@@ -50,7 +51,7 @@ export function AppSidebar({ categories, ...props }: AppSidebarProps) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
+              <Link href="/">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                   <Image src="/globe.svg" alt="Logo" width={40} height={40} />
                 </div>
@@ -58,7 +59,7 @@ export function AppSidebar({ categories, ...props }: AppSidebarProps) {
                   <span className="truncate font-semibold">EADSkills</span>
                   <span className="truncate text-xs">Enterprise</span>
                 </div>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
