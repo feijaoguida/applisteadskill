@@ -18,7 +18,7 @@ interface CardsProps {
 }
 
 export default function Cards({ product }: CardsProps) {
-  const link = `/product/${product.id}`;
+  const link = `/products/${product.id}`;
   return (
     <div>
       <Card key={product?.id} className="grid grid-rows-[auto_auto_1fr_auto]">

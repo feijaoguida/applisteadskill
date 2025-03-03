@@ -2,16 +2,18 @@ import { Product } from "@/components/DataTable/columns";
 import { getProducts } from "@/gets/getProducts";
 import DetailProduct from "./_components/detail";
 
-type DetailProductPageProps = {
-  params: {
-    id: string;
-  };
-};
+// type DetailProductPageProps = {
+//   params: {
+//     id: string;
+//   };
+// };
 
-export default async function DetailProductPage({
-  params,
-}: DetailProductPageProps) {
-  const ID: number = parseInt(params.id);
+export default async function DetailProductPage(props: {
+  params: Promise<{ id: string }>;
+}) {
+  const { params } = props;
+  const { id } = await params;
+  const ID: number = parseInt(id);
 
   const product: Product = (await getProducts(ID)) as Product;
 
