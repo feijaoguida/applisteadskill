@@ -1,11 +1,19 @@
 import { Product } from "@/components/DataTable/columns";
 import { Api } from "@/lib/api";
 
-export async function getProducts(): Promise<[Product] | void> {
+export async function getProducts(
+  id?: number
+): Promise<Product | Product[] | void> {
   try {
-    const response = await Api.get("products");
+    if (id) {
+      const response = await Api.get(`products/${id}`);
 
-    return response.data;
+      return response.data as Product;
+    } else {
+      const response = await Api.get("products");
+
+      return response.data;
+    }
   } catch (error) {
     console.log(error);
   }

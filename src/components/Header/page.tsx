@@ -1,16 +1,13 @@
+"use client";
 import Link from "next/link";
 import Logo from "../logo";
 import { Button } from "../ui/button";
+import { SessionProvider, signOut, useSession } from "next-auth/react";
 
 export default function Header() {
+  const { data: session } = useSession();
   return (
     <header className=" flex justify-center items-center  bg-blueead text-white  py-4">
-      {/* criar um header dividido em 3 areas uma ao lado da outra,
-       area 1: com a logo da empresa, 
-       Area 2: um menu de navegação, com os links: Home, Produtos, Sobre, Contato e 
-       Area 3: Botão de Login
-       
-       todos bem formadado criando os componentes separados*/}
       <div className=" container flex flex-row justify-between items-center ">
         <Logo />
 
@@ -23,6 +20,9 @@ export default function Header() {
               <Link href="/products">Produto</Link>
             </li>
             <li>
+              <Link href="/dashboard">Dashboard</Link>
+            </li>
+            <li>
               <a
                 href="https://linktr.ee/rbgsolucoes "
                 target="_blank"
@@ -33,9 +33,16 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-        <Button className="text-white ">
-          <Link href="/login">Login</Link>
-        </Button>
+
+        {!session ? (
+          <Button className="text-white ">
+            <Link href="/login">Login</Link>
+          </Button>
+        ) : (
+          <>
+            <Button onClick={() => signOut()}>Logout</Button>
+          </>
+        )}
       </div>
     </header>
   );

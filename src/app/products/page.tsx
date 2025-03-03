@@ -1,26 +1,23 @@
-import { HeroHome } from "@/components/Hero/heroHome";
-import ProductPagination from "@/components/ProductsPagination/productPagination";
+import HeroProducts from "@/components/Hero/heroProducts";
 
 import { getProducts } from "@/gets/getProducts";
+import { getCategories } from "@/gets/getCategories";
+import { Product } from "@/components/DataTable/columns";
+import BodyPage from "./bodyPage";
 
 export default async function ProductPage() {
-  const products = await getProducts();
+  const products = (await getProducts()) as Product[];
+  const categories = await getCategories();
 
   return (
     <>
       <main className="Flex flex-1 ">
-        <HeroHome />
+        <HeroProducts />
       </main>
-      <div className="flex flex-col items-center  w-full bg-blueead">
-        <section className="container bg-zinc-200">
-          <div className="flex mt-10 p-4 items-center justify-between">
-            <h1 className="text-3xl text-center font-bold text-orangeead ">
-              Shop
-            </h1>
-          </div>
-          <ProductPagination products={products!} />
-        </section>
-      </div>
+      <BodyPage
+        products={products as Product[]}
+        categories={categories as string[]}
+      />
     </>
   );
 }

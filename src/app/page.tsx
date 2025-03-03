@@ -4,9 +4,10 @@ import React from "react";
 
 import Cards from "@/components/CardProducts/card-products";
 import Link from "next/link";
+import { Product } from "@/components/DataTable/columns";
 
 export default async function Home() {
-  const products = await getProducts();
+  const products = (await getProducts()) as Product[];
 
   return (
     <>
