@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Logo from "../logo";
 import { Button } from "../ui/button";
-import { SessionProvider, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Header() {
   const { data: session } = useSession();
